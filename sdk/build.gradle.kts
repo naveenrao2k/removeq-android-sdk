@@ -1,5 +1,20 @@
 plugins {
     alias(libs.plugins.androidLibrary)
+    id("maven-publish")
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "naveenrao2k"
+            artifactId = "removeq-android-sdk"
+            version = "0.0.1"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
 
 android {
