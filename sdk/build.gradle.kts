@@ -3,20 +3,6 @@ plugins {
     id("maven-publish")
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "naveenrao2k"
-            artifactId = "removeq-android-sdk"
-            version = "0.0.1"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-}
-
 android {
     namespace = "com.removeq.sdk"
     compileSdk = 34
@@ -37,6 +23,20 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.naveenrao2k"
+            artifactId = "removeq-android-sdk"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
     }
 }
 
