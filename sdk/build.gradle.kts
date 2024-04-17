@@ -3,9 +3,17 @@ plugins {
     id("maven-publish")
 }
 
+
 android {
     namespace = "com.removeq.sdk"
     compileSdk = 34
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 
     defaultConfig {
         minSdk = 24
@@ -31,7 +39,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.naveenrao2k"
             artifactId = "removeq-android-sdk"
-            version = "1.0.0"
+            version = "1.0.1"
 
             afterEvaluate {
                 from(components["release"])
